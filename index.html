@@ -1871,6 +1871,7 @@ function createRacingCard(horse) {
                 <span class="card-badge">${horse.status}</span>
             </div>
             <div class="card-content">
+                ${horse.achievement ? (Array.isArray(horse.achievement) ? horse.achievement.map(a => `<div class="achievement-badge${a.includes('Champion') ? ' champion' : ''}">${a}</div>`).join('') : `<div class="achievement-badge${horse.achievement.includes('Champion') ? ' champion' : ''}">${horse.achievement}</div>`) : ''}
                 <h4 class="horse-name">${horse.name}</h4>
                 <p class="horse-subtitle">By ${horse.sire.toUpperCase()} out of ${horse.dam}</p>
                 <div class="info-grid">
