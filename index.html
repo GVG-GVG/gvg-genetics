@@ -230,12 +230,6 @@
             box-shadow: 0 10px 40px rgba(201, 162, 39, 0.15);
         }
 
-        .horse-card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
         .card-image {
             background: linear-gradient(135deg, var(--black-light) 0%, var(--gray-dark) 100%);
             display: flex;
@@ -1831,19 +1825,9 @@ const foals = [
 // RENDERING FUNCTIONS
 // ============================================
 
-// Helper function to create URL-friendly slugs
-function createSlug(name) {
-    return name.toLowerCase()
-        .replace(/[']/g, '')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '');
-}
-
 function createRacingCard(horse) {
-    const slug = createSlug(horse.name);
     return `
-        <a href="horses/${slug}.html" class="horse-card-link">
-        <div class="horse-card">
+        <div class="horse-card" onclick="openModal('racing', '${horse.name}')"
             <div class="card-image">
                 ${horse.image
                     ? `<img src="${horse.image}" alt="${horse.name}">`
@@ -1875,15 +1859,12 @@ function createRacingCard(horse) {
                 <span class="view-details">View Details →</span>
             </div>
         </div>
-        </a>
     `;
 }
 
 function createBroodmareCard(mare) {
-    const slug = createSlug(mare.name);
     return `
-        <a href="horses/${slug}.html" class="horse-card-link">
-        <div class="horse-card">
+        <div class="horse-card" onclick="openModal('broodmare', '${mare.name}')"
             <div class="card-image">
                 ${mare.image
                     ? `<img src="${mare.image}" alt="${mare.name}">`
@@ -1916,15 +1897,12 @@ function createBroodmareCard(mare) {
                 <span class="view-details">View Details →</span>
             </div>
         </div>
-        </a>
     `;
 }
 
 function createFoalCard(foal) {
-    const slug = createSlug(foal.name);
     return `
-        <a href="horses/${slug}.html" class="horse-card-link">
-        <div class="horse-card">
+        <div class="horse-card" onclick="openModal('foal', '${foal.name}')">
             <div class="card-image">
                 ${foal.image
                     ? `<img src="${foal.image}" alt="${foal.name}">`
@@ -1956,7 +1934,6 @@ function createFoalCard(foal) {
                 <span class="view-details">View Details →</span>
             </div>
         </div>
-        </a>
     `;
 }
 
