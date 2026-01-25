@@ -230,6 +230,12 @@
             box-shadow: 0 10px 40px rgba(201, 162, 39, 0.15);
         }
 
+        .horse-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
         .card-image {
             background: linear-gradient(135deg, var(--black-light) 0%, var(--gray-dark) 100%);
             display: flex;
@@ -1288,7 +1294,7 @@ const racingHorses = [
         achievement: null,
         pedigreeNotes: "By Vekoma, Champion Sprinter and Breeders' Cup Sprint winner. Dam by Hansen with Tapit influence. Speed on speed pedigree with stamina underneath.",
         news: [],
-        image: "vajra.jpg"
+        image: null
     },
     {
         name: "Tiyara",
@@ -1307,7 +1313,7 @@ const racingHorses = [
         achievement: null,
         pedigreeNotes: "By Triple Crown winner American Pharoah. Dam by Kentucky Derby winner Animal Kingdom. Classic pedigree built for two turns and beyond.",
         news: [],
-        image: "tiyara.jpg"
+        image: null
     },
     {
         name: "Psychadelacized '24",
@@ -1326,7 +1332,7 @@ const racingHorses = [
         achievement: null,
         pedigreeNotes: "By Upstart, sire of champion Zandon. Partnership with Airdrie Stud.",
         news: [],
-        image: "psychadelacized-24.jpg",
+        image: "UPLOAD-psychadelacized-24.jpg",
         pedigreeImage: "pedigree-psychadelacized-24.pdf"
     }
 ];
@@ -1351,7 +1357,7 @@ const broodmares = [
         pedigreeImage: "pedigree-panamama.pdf",
         pedigreeNotes: "By Mendelssohn (Into Mischief), winner of the UAE Derby-G2. Dam is a half-sister to multiple stakes winners. Strong Uncle Mo influence on the bottom side. Retired from racing.",
         news: [],
-        image: "panamama.jpg"
+        image: "UPLOAD-panamama.jpg"
     },
     {
         name: "Nubility",
@@ -1378,7 +1384,7 @@ const broodmares = [
         pedigreeImage: "pedigree-nubility.pdf",
         pedigreeNotes: "By Violence out of a Mineshaft mare. Dam of dam by Twirling Candy (Lane's End). A blend of speed and stamina.",
         news: [],
-        image: "nubility-new.jpg"
+        image: "UPLOAD-nubility-new.jpg"
     },
     {
         name: "The Easel Queen",
@@ -1402,7 +1408,7 @@ const broodmares = [
         pedigreeImage: "pedigree-the-easel-queen.pdf",
         pedigreeNotes: "By champion sprinter Munnings. Dam by Australian champion Fastnet Rock adds international pedigree depth. Haplogroup L - a rare and valuable maternal line.",
         news: [],
-        image: "the-easel-queen.jpg"
+        image: null
     },
     {
         name: "Cuff",
@@ -1486,7 +1492,7 @@ const broodmares = [
         pedigreeImage: "pedigree-malibeauty.pdf",
         pedigreeNotes: "By Malibu Moon, sire of Kentucky Derby winners and multiple G1 winners. Dam by Thunder Gulch adds stamina and class.",
         news: [{title: "Malibeauty Has Hudson Dreaming Again", url: "https://www.thoroughbreddailynews.com/malibeauty-has-hudson-dreaming-again/", date: ""}],
-        image: "malibeauty.jpg"
+        image: null
     },
     {
         name: "Salute The Flag",
@@ -1513,7 +1519,7 @@ const broodmares = [
         pedigreeImage: "pedigree-salute-the-flag.pdf",
         pedigreeNotes: "By Curlin, a two-time Horse of the Year. Dam by A.P. Indy, one of the most influential sires in American racing. Blue-blood pedigree top and bottom.",
         news: [{title: "Insight Outcomes: Maracuja, Mendenhall & More Hint at Bright 2022", url: "https://www.thoroughbreddailynews.com/insight-outcomes-maracuja-mendenhall-more-hint-at-bright-2022/", date: "2022"}],
-        image: "salute-the-flag.jpg",
+        image: null,
         gallery: ["Salute The Flag Pasture.jpg", "Salute The Flag as a foal.jpg", "Salute The Flag as a foal 2.jpg", "Salute The Flag Headshot.jpg", "Salute The Flag Maiden Win.jpg"]
     },
     {
@@ -1570,7 +1576,7 @@ const broodmares = [
         achievement: "Graded Stakes Placed",
         pedigreeNotes: "By Tourist, winner of the Breeders' Cup Mile. South American female line adds genetic diversity.",
         news: [{title: "Embracing Digital Sales: Team Valor Has Two on Offer at Fasig-Tipton January Digital", url: "https://www.thoroughbreddailynews.com/embracing-digital-sales-team-valor-has-two-on-offer-at-fasig-tipton-january-digital/", date: ""}],
-        image: "toeris.jpg",
+        image: null,
         pedigreeImage: "pedigree-toeris.pdf"
     },
     {
@@ -1599,7 +1605,7 @@ const broodmares = [
         achievement: "Stakes Winner",
         pedigreeNotes: "By Kentucky Derby winner Super Saver. Stakes winner. A proven producer with a deep pedigree.",
         news: [],
-        image: "lil-super-bear.jpg",
+        image: null,
         pedigreeImage: "pedigree-lil-super-bear.pdf",
         gallery: ["Lil Super Bear Stakes Win.jpg"]
     },
@@ -1685,7 +1691,7 @@ const broodmares = [
         achievement: ["Multiple Stakes Winner", "2020 NY Champion Turf Female", "2020 NY Champion Female Sprinter"],
         pedigreeNotes: "By Maclean's Music, a proven sire of fast horses. Multiple stakes winner with $316K in earnings. 2020 New York-Bred Champion Turf Female and Champion Female Sprinter. Being bred to Army Mule for pure speed.",
         news: [{title: "Tiz the Law Voted New York-Bred Horse of the Year", url: "https://www.bloodhorse.com/horse-racing/articles/247261/tiz-the-law-voted-new-york-bred-horse-of-the-year", date: ""}, {title: "Windylea Farm Reaches New Heights on NYRA Circuit", url: "https://www.bloodhorse.com/horse-racing/articles/267496/windylea-farm-reaches-new-heights-on-nyra-circuit", date: ""}],
-        image: "lead-guitar.jpg",
+        image: null,
         gallery: ["Lead Guitar Stakes Win.jpg", "Lead Guitar Winning Stakes 2.jpg"],
         pedigreeImage: "pedigree-lead-guitar.pdf"
     },
@@ -1711,7 +1717,7 @@ const broodmares = [
         achievement: null,
         pedigreeNotes: "By Gleneagles, a European champion. Dam by Dansili adds turf influence. International pedigree.",
         news: [],
-        image: "north-country-fair.jpg",
+        image: null,
         pedigreeImage: "pedigree-north-country-fair.pdf"
     },
     {
@@ -1825,9 +1831,19 @@ const foals = [
 // RENDERING FUNCTIONS
 // ============================================
 
+// Helper function to create URL-friendly slugs
+function createSlug(name) {
+    return name.toLowerCase()
+        .replace(/[']/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
 function createRacingCard(horse) {
+    const slug = createSlug(horse.name);
     return `
-        <div class="horse-card" onclick="openModal('racing', '${horse.name.replace(/'/g, "\\'")}')">
+        <a href="horses/${slug}.html" class="horse-card-link">
+        <div class="horse-card">
             <div class="card-image">
                 ${horse.image
                     ? `<img src="${horse.image}" alt="${horse.name}">`
@@ -1859,12 +1875,15 @@ function createRacingCard(horse) {
                 <span class="view-details">View Details →</span>
             </div>
         </div>
+        </a>
     `;
 }
 
 function createBroodmareCard(mare) {
+    const slug = createSlug(mare.name);
     return `
-        <div class="horse-card" onclick="openModal('broodmare', '${mare.name.replace(/'/g, "\\'")}')">
+        <a href="horses/${slug}.html" class="horse-card-link">
+        <div class="horse-card">
             <div class="card-image">
                 ${mare.image
                     ? `<img src="${mare.image}" alt="${mare.name}">`
@@ -1897,12 +1916,15 @@ function createBroodmareCard(mare) {
                 <span class="view-details">View Details →</span>
             </div>
         </div>
+        </a>
     `;
 }
 
 function createFoalCard(foal) {
+    const slug = createSlug(foal.name);
     return `
-        <div class="horse-card" onclick="openModal('foal', '${foal.name.replace(/'/g, "\\'")}')">
+        <a href="horses/${slug}.html" class="horse-card-link">
+        <div class="horse-card">
             <div class="card-image">
                 ${foal.image
                     ? `<img src="${foal.image}" alt="${foal.name}">`
@@ -1934,6 +1956,7 @@ function createFoalCard(foal) {
                 <span class="view-details">View Details →</span>
             </div>
         </div>
+        </a>
     `;
 }
 
