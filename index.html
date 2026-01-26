@@ -1326,7 +1326,7 @@ const racingHorses = [
         achievement: null,
         pedigreeNotes: "By Upstart, sire of champion Zandon. Partnership with Airdrie Stud.",
         news: [],
-        image: "psychadelacized-24.jpg",
+        image: "UPLOAD-psychadelacized-24.jpg",
         pedigreeImage: "pedigree-psychadelacized-24.pdf"
     }
 ];
@@ -1351,7 +1351,7 @@ const broodmares = [
         pedigreeImage: "pedigree-panamama.pdf",
         pedigreeNotes: "By Mendelssohn (Into Mischief), winner of the UAE Derby-G2. Dam is a half-sister to multiple stakes winners. Strong Uncle Mo influence on the bottom side. Retired from racing.",
         news: [],
-        image: "panamama.jpg"
+        image: "UPLOAD-panamama.jpg"
     },
     {
         name: "Nubility",
@@ -1378,7 +1378,7 @@ const broodmares = [
         pedigreeImage: "pedigree-nubility.pdf",
         pedigreeNotes: "By Violence out of a Mineshaft mare. Dam of dam by Twirling Candy (Lane's End). A blend of speed and stamina.",
         news: [],
-        image: "nubility-new.jpg"
+        image: "UPLOAD-nubility-new.jpg"
     },
     {
         name: "The Easel Queen",
@@ -1827,7 +1827,7 @@ const foals = [
 
 function createRacingCard(horse) {
     return `
-        <div class="horse-card" onclick="openModal('racing', '${horse.name}')"
+        <div class="horse-card" onclick="openModal('racing', '${horse.name.replace(/'/g, "\\'")}')">
             <div class="card-image">
                 ${horse.image
                     ? `<img src="${horse.image}" alt="${horse.name}">`
@@ -1864,7 +1864,7 @@ function createRacingCard(horse) {
 
 function createBroodmareCard(mare) {
     return `
-        <div class="horse-card" onclick="openModal('broodmare', '${mare.name}')"
+        <div class="horse-card" onclick="openModal('broodmare', '${mare.name.replace(/'/g, "\\'")}')">
             <div class="card-image">
                 ${mare.image
                     ? `<img src="${mare.image}" alt="${mare.name}">`
@@ -1902,7 +1902,7 @@ function createBroodmareCard(mare) {
 
 function createFoalCard(foal) {
     return `
-        <div class="horse-card" onclick="openModal('foal', '${foal.name}')">
+        <div class="horse-card" onclick="openModal('foal', '${foal.name.replace(/'/g, "\\'")}')">
             <div class="card-image">
                 ${foal.image
                     ? `<img src="${foal.image}" alt="${foal.name}">`
