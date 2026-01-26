@@ -808,6 +808,20 @@
             text-decoration: underline;
         }
 
+        .equibase-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .equibase-link:hover {
+            color: var(--gold-light);
+            text-decoration: underline;
+        }
+
         .breeding-card .farm {
             font-size: 0.85rem;
             color: var(--gray);
@@ -1286,6 +1300,7 @@ const racingHorses = [
             {age: 2, starts: 3, wins: 0, seconds: 1, thirds: 0, earned: 27600}
         ],
         achievement: null,
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=11332555&registry=T",
         pedigreeNotes: "By Vekoma, Champion Sprinter and Breeders' Cup Sprint winner. Dam by Hansen with Tapit influence. Speed on speed pedigree with stamina underneath.",
         news: [],
         image: "vajra.jpg"
@@ -1308,6 +1323,7 @@ const racingHorses = [
             {age: 2, starts: 1, wins: 1, seconds: 0, thirds: 0, earned: 21000}
         ],
         achievement: "Winner on Debut",
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=11303231&registry=T",
         pedigreeNotes: "By Triple Crown winner American Pharoah. Dam by Kentucky Derby winner Animal Kingdom. Classic pedigree built for two turns and beyond.",
         news: [],
         image: "tiyara.jpg"
@@ -1458,6 +1474,7 @@ const broodmares = [
             {age: 5, starts: 3, wins: 1, seconds: 0, thirds: 0, earned: 79950}
         ],
         achievement: ["Stakes Winner", "Over $400K in Earnings"],
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=10813600&registry=T",
         pedigreeImage: "pedigree-bru-na-boinne.pdf",
         pedigreeNotes: "By Arrogate, one of the highest-rated racehorses in history and winner of the Breeders' Cup Classic, Dubai World Cup, and Pegasus World Cup.",
         news: [{title: "Bru Na Boinne Video", url: "https://www.facebook.com/watch/?v=1290783312002071", date: ""}],
@@ -1514,6 +1531,7 @@ const broodmares = [
             {age: 4, starts: 6, wins: 2, seconds: 2, thirds: 0, earned: 174740}
         ],
         achievement: "Over $185K in Earnings",
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=10403558&registry=T&rbt=TB",
         pedigreeImage: "pedigree-salute-the-flag.pdf",
         pedigreeNotes: "By Curlin, a two-time Horse of the Year. Dam by A.P. Indy, one of the most influential sires in American racing. Blue-blood pedigree top and bottom.",
         news: [{title: "Insight Outcomes: Maracuja, Mendenhall & More Hint at Bright 2022", url: "https://www.thoroughbreddailynews.com/insight-outcomes-maracuja-mendenhall-more-hint-at-bright-2022/", date: "2022"}],
@@ -1572,6 +1590,7 @@ const broodmares = [
             {age: 5, starts: 4, wins: 1, seconds: 0, thirds: 0, earned: 21746}
         ],
         achievement: ["Graded Stakes Placed", "Over $165K in Earnings"],
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=10588423&registry=T",
         pedigreeNotes: "By Tourist, winner of the Breeders' Cup Mile. South American female line adds genetic diversity.",
         news: [{title: "Embracing Digital Sales: Team Valor Has Two on Offer at Fasig-Tipton January Digital", url: "https://www.thoroughbreddailynews.com/embracing-digital-sales-team-valor-has-two-on-offer-at-fasig-tipton-january-digital/", date: ""}],
         image: "toeris.jpg",
@@ -1630,6 +1649,7 @@ const broodmares = [
             {age: 3, starts: 2, wins: 1, seconds: 0, thirds: 0, earned: 28200}
         ],
         achievement: "Set Track Record - Gulfstream Park",
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=9719334&registry=T",
         pedigreeNotes: "By Awesome Again, sire of Breeders' Cup Classic winners. Solid American dirt pedigree.",
         news: [],
         image: "blind-pool.jpg",
@@ -1687,6 +1707,7 @@ const broodmares = [
             {age: 5, starts: 3, wins: 0, seconds: 1, thirds: 0, earned: 26002}
         ],
         achievement: ["Multiple Stakes Winner", "2020 NY Champion Turf Female", "2020 NY Champion Female Sprinter", "Over $315K in Earnings"],
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=10060386&registry=T&rbt=TB",
         pedigreeNotes: "By Maclean's Music, a proven sire of fast horses. Multiple stakes winner with $316K in earnings. 2020 New York-Bred Champion Turf Female and Champion Female Sprinter. Being bred to Army Mule for pure speed.",
         news: [{title: "Tiz the Law Voted New York-Bred Horse of the Year", url: "https://www.bloodhorse.com/horse-racing/articles/247261/tiz-the-law-voted-new-york-bred-horse-of-the-year", date: ""}, {title: "Windylea Farm Reaches New Heights on NYRA Circuit", url: "https://www.bloodhorse.com/horse-racing/articles/267496/windylea-farm-reaches-new-heights-on-nyra-circuit", date: ""}],
         image: "lead-guitar.jpg",
@@ -1713,6 +1734,7 @@ const broodmares = [
             {age: 3, starts: 2, wins: 0, seconds: 1, thirds: 1, earned: 12450}
         ],
         achievement: null,
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=10489299&registry=T",
         pedigreeNotes: "By Gleneagles, a European champion. Dam by Dansili adds turf influence. International pedigree.",
         news: [],
         image: "north-country-fair.jpg",
@@ -1741,6 +1763,7 @@ const broodmares = [
             {age: 5, starts: 2, wins: 0, seconds: 0, thirds: 0, earned: 2440}
         ],
         achievement: ["Stakes Winner", "Over $145K in Earnings"],
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=10111296&registry=T",
         pedigreeNotes: "By Munnings, champion sprinter and proven sire. Stakes winner with 5 wins and $148K in earnings. Dam by Stormy Atlantic adds more speed.",
         news: [{title: "Munnings' A Thousand Reasons Wins Orleans Stakes", url: "https://web.archive.org/web/20200813061242/https://coolmore.com/farms/america/news/munnings-a-thousand-reasons-wins-orleans-stakes", date: "2020"}, {title: "Jolie Olimpica, Magic Star post impressing wins in weekend horse racing", url: "https://www.upi.com/Sports_News/2020/01/13/Jolie-Olimpica-Magic-Star-post-impressing-wins-in-weekend-horse-racing/3681578891304/", date: "2020"}, {title: "A Thousand Reasons Dominates The Orleans Stakes - Tom Amoss Assistant Talks About The Talented Filly", url: "https://www.youtube.com/watch?v=JVq3xollYN8", date: ""}],
         image: "a-thousand-reasons.jpg",
@@ -1764,6 +1787,7 @@ const broodmares = [
         racingRecord: {starts: 13, wins: 3, places: 2, shows: 2},
         earnings: 210126,
         achievement: ["Graded Stakes Placed", "Multiple Stakes Placed", "Over $210K in Earnings"],
+        equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=9858273&registry=T&rbt=TB",
         raceHistory: [
             {age: 2, starts: 1, wins: 0, seconds: 0, thirds: 0, earned: 3750},
             {age: 3, starts: 10, wins: 2, seconds: 1, thirds: 2, sp3: 1, earned: 145216},
@@ -2097,6 +2121,15 @@ function openModal(type, name) {
                         <div class="pedigree-value" style="color: var(--gold);">$${horse.earnings.toLocaleString()}</div>
                     </div>
                 </div>
+            `;
+        }
+
+        // Add Equibase link if available
+        if (horse.equibaseUrl) {
+            bodyHtml += `
+                <a href="${horse.equibaseUrl}" target="_blank" class="equibase-link">
+                    View Detailed Racing Results →
+                </a>
             `;
         }
 
