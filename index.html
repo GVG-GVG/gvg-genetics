@@ -828,6 +828,13 @@
             margin-top: 0.25rem;
         }
 
+        .breeding-card .due-date {
+            font-size: 0.9rem;
+            color: var(--gold-light);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
         .news-list {
             display: flex;
             flex-direction: column;
@@ -1400,6 +1407,7 @@ const broodmares = [
         inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/170565/bolt-doro",
         truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=9898625&mareReferenceNumber=9719334&mareName=Blind%20Pool",
         inFoalFarm: "Spendthrift",
+        dueDate: "March 21",
         nextMating: "Cogburn",
         nextMatingLink: "https://www.bloodhorse.com/stallion-register/stallions/172962/cogburn",
         nextMatingFarm: "WinStar",
@@ -1460,6 +1468,7 @@ const broodmares = [
         inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/170550/justify",
         truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=9896728&mareReferenceNumber=9789549&mareName=Cuff%20(IRE)",
         inFoalFarm: "Coolmore",
+        dueDate: "April 10",
         nextMating: "Not This Time",
         nextMatingLink: "https://www.bloodhorse.com/stallion-register/stallions/169586/not-this-time",
         nextMatingFarm: "Taylor Made",
@@ -1549,6 +1558,7 @@ const broodmares = [
         inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/172929/heartland",
         truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=10968433&mareReferenceNumber=11089403&mareName=Jack%27s%20Magic%20Girl",
         inFoalFarm: "WinStar",
+        dueDate: "March 7",
         nextMating: "Yaupon",
         nextMatingLink: "https://www.bloodhorse.com/stallion-register/stallions/171995/yaupon",
         nextMatingFarm: "Spendthrift",
@@ -1607,6 +1617,7 @@ const broodmares = [
         inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/130025/hard-spun",
         truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=7187963&mareReferenceNumber=9280763&mareName=Lil%20Super%20Bear",
         inFoalFarm: "Darley",
+        dueDate: "February 20",
         nextMating: "Jackie's Warrior",
         nextMatingLink: "https://www.bloodhorse.com/stallion-register/stallions/172304/jackies-warrior",
         nextMatingFarm: "Spendthrift",
@@ -1638,6 +1649,7 @@ const broodmares = [
         inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/170569/oscar-performance",
         truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=9694239&mareReferenceNumber=10280996&mareName=Malibeauty",
         inFoalFarm: "Mill Ridge",
+        dueDate: "February 5",
         nextMating: "Citizen Bull",
         nextMatingLink: "https://www.bloodhorse.com/stallion-register/stallions/173298/citizen-bull",
         nextMatingFarm: "Ashford Stud",
@@ -1692,6 +1704,7 @@ const broodmares = [
         inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/119328/twirling-candy",
         truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=7998833&mareReferenceNumber=10784882&mareName=Nubility",
         inFoalFarm: "Lane's End",
+        dueDate: "April 1",
         nextMating: "Upstart",
         nextMatingLink: "https://www.bloodhorse.com/stallion-register/stallions/169546/upstart",
         nextMatingFarm: "Airdrie",
@@ -1741,6 +1754,7 @@ const broodmares = [
         inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/172407/epicenter",
         truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=10575627&mareReferenceNumber=10403558&mareName=Salute%20the%20Flag",
         inFoalFarm: "Coolmore",
+        dueDate: "March 1",
         nextMating: "Vekoma",
         nextMatingLink: "https://www.bloodhorse.com/stallion-register/stallions/171624/vekoma",
         nextMatingFarm: "Spendthrift",
@@ -1771,6 +1785,7 @@ const broodmares = [
         inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/170569/oscar-performance",
         truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=9694239&mareReferenceNumber=10962963&mareName=The%20Easel%20Queen",
         inFoalFarm: "Mill Ridge",
+        dueDate: "March 1",
         nextMating: "Liam's Map",
         nextMatingLink: "https://www.bloodhorse.com/stallion-register/stallions/169094/liams-map",
         nextMatingFarm: "Lane's End",
@@ -1795,6 +1810,7 @@ const broodmares = [
         inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/172929/heartland",
         truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=10968433&mareReferenceNumber=10588423&mareName=Toeris",
         inFoalFarm: "WinStar",
+        dueDate: "May 9",
         nextMating: null,
         nextMatingFarm: null,
         racingRecord: {starts: 17, wins: 3, places: 2, shows: 4},
@@ -1914,7 +1930,7 @@ function createBroodmareCard(mare) {
                         <path d="M10 70 Q30 20 50 40 Q60 50 70 35 Q90 10 110 50 L110 70 Z" fill="#444"/>
                        </svg>`
                 }
-                ${mare.inFoalTo ? `<span class="card-badge">In Foal</span>` : ''}
+                ${mare.inFoalTo ? `<span class="card-badge">In Foal${mare.dueDate ? ` - Due ${mare.dueDate}` : ''}</span>` : ''}
             </div>
             <div class="card-content">
                 ${mare.achievement ? (Array.isArray(mare.achievement) ? mare.achievement.map(a => `<div class="achievement-badge${a.includes('Champion') ? ' champion' : ''}">${a}</div>`).join('') : `<div class="achievement-badge${mare.achievement.includes('Champion') ? ' champion' : ''}">${mare.achievement}</div>`) : ''}
@@ -2017,9 +2033,9 @@ function openModal(type, name) {
         badgesHtml.push(`<span class="modal-badge">${horse.status}</span>`);
     } else if (type === 'broodmare' && horse.inFoalTo) {
         if (horse.truNicksLink) {
-            badgesHtml.push(`<a href="${horse.truNicksLink}" target="_blank" class="modal-badge truenicks-badge">In Foal to ${horse.inFoalTo} <span class="truenicks-icon">TN</span></a>`);
+            badgesHtml.push(`<a href="${horse.truNicksLink}" target="_blank" class="modal-badge truenicks-badge">In Foal to ${horse.inFoalTo}${horse.dueDate ? ` - Due ${horse.dueDate}` : ''} <span class="truenicks-icon">TN</span></a>`);
         } else {
-            badgesHtml.push(`<span class="modal-badge">In Foal to ${horse.inFoalTo}</span>`);
+            badgesHtml.push(`<span class="modal-badge">In Foal to ${horse.inFoalTo}${horse.dueDate ? ` - Due ${horse.dueDate}` : ''}</span>`);
         }
     } else if (type === 'foal') {
         badgesHtml.push(`<span class="modal-badge">${horse.sex}</span>`);
@@ -2189,6 +2205,7 @@ function openModal(type, name) {
                         <h5>Currently In Foal To</h5>
                         <div class="stallion">${inFoalDisplay}</div>
                         ${horse.inFoalFarm ? `<div class="farm">${getFarmLink(horse.inFoalFarm)}</div>` : ''}
+                        ${horse.dueDate ? `<div class="due-date">Due: ${horse.dueDate}</div>` : ''}
                     </div>
                     <div class="breeding-card">
                         <h5>Next Scheduled Mating</h5>
