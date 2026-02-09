@@ -1645,11 +1645,9 @@ const broodmares = [
         location: "River Valley Stock Farm",
         percentOwned: 100,
         partners: null,
-        inFoalTo: "Oscar Performance",
-        inFoalToLink: "https://www.bloodhorse.com/stallion-register/stallions/170569/oscar-performance",
-        truNicksLink: "https://www.truenicks.com/free-reports/hypothetical-mating/display?stallionReferenceNumber=9694239&mareReferenceNumber=10280996&mareName=Malibeauty",
-        inFoalFarm: "Mill Ridge",
-        dueDate: "February 5",
+        inFoalTo: null,
+        inFoalFarm: null,
+        delivered: "Colt on Feb. 7th",
         nextMating: "Citizen Bull",
         nextMatingLink: "https://www.bloodhorse.com/stallion-register/stallions/173298/citizen-bull",
         nextMatingFarm: "Ashford Stud",
@@ -1875,6 +1873,21 @@ const foals = [
         news: [],
         image: "the-easel-queen-25.jpg",
         pedigreeImage: "pedigree-the-easel-queen-25.pdf"
+    },
+    {
+        name: "Malibeauty '26",
+        sire: "Oscar Performance",
+        dam: "Malibeauty",
+        damSire: "Malibu Moon",
+        birthdate: "February 7, 2026",
+        sex: "Colt",
+        location: "River Valley Stock Farm",
+        percentOwned: 100,
+        partners: null,
+        pedigreeNotes: "First foal of 2026 for GVG Genetics. By Oscar Performance, a champion turf horse and son of Kitten's Joy. Dam by Malibu Moon won twice at 2.",
+        news: [],
+        image: "malibeauty-26.jpg",
+        pedigreeImage: null
     }
 ];
 
@@ -1930,7 +1943,7 @@ function createBroodmareCard(mare) {
                         <path d="M10 70 Q30 20 50 40 Q60 50 70 35 Q90 10 110 50 L110 70 Z" fill="#444"/>
                        </svg>`
                 }
-                ${mare.inFoalTo ? `<span class="card-badge">In Foal${mare.dueDate ? ` - Due ${mare.dueDate}` : ''}</span>` : ''}
+                ${mare.inFoalTo ? `<span class="card-badge">In Foal${mare.dueDate ? ` - Due ${mare.dueDate}` : ''}</span>` : mare.delivered ? `<span class="card-badge">Delivered ${mare.delivered}</span>` : ''}
             </div>
             <div class="card-content">
                 ${mare.achievement ? (Array.isArray(mare.achievement) ? mare.achievement.map(a => `<div class="achievement-badge${a.includes('Champion') ? ' champion' : ''}">${a}</div>`).join('') : `<div class="achievement-badge${mare.achievement.includes('Champion') ? ' champion' : ''}">${mare.achievement}</div>`) : ''}
@@ -2037,6 +2050,8 @@ function openModal(type, name) {
         } else {
             badgesHtml.push(`<span class="modal-badge">In Foal to ${horse.inFoalTo}${horse.dueDate ? ` - Due ${horse.dueDate}` : ''}</span>`);
         }
+    } else if (type === 'broodmare' && horse.delivered) {
+        badgesHtml.push(`<span class="modal-badge">Delivered ${horse.delivered}</span>`);
     } else if (type === 'foal') {
         badgesHtml.push(`<span class="modal-badge">${horse.sex}</span>`);
     }
