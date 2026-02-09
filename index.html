@@ -1152,7 +1152,8 @@
         <nav>
             <a href="#racing" class="active">Racing</a>
             <a href="#broodmares">Broodmares</a>
-            <a href="#foals">Foals</a>
+            <a href="#yearlings">Yearlings</a>
+            <a href="#foals">2026 Foals</a>
             <a href="#contact">Contact</a>
             <a href="https://x.com/GVG_Genetics" target="_blank" class="nav-social" title="Follow us on X">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1176,8 +1177,12 @@
             <div class="stat-label">Broodmares</div>
         </div>
         <div class="stat">
-            <div class="stat-number" id="stat-foals">3</div>
-            <div class="stat-label">2025 Foals</div>
+            <div class="stat-number" id="stat-yearlings">3</div>
+            <div class="stat-label">Yearlings</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="stat-foals">1</div>
+            <div class="stat-label">2026 Foals</div>
         </div>
     </div>
 </section>
@@ -1205,11 +1210,22 @@
         </div>
     </section>
 
-    <!-- Foals Section -->
+    <!-- Yearlings Section -->
+    <section id="yearlings">
+        <div class="section-header">
+            <h3>Yearlings</h3>
+            <span class="count" id="count-yearlings">3</span>
+        </div>
+        <div class="horse-grid" id="yearling-grid">
+            <!-- Cards populated by JS -->
+        </div>
+    </section>
+
+    <!-- 2026 Foals Section -->
     <section id="foals">
         <div class="section-header">
-            <h3>2025 Foals</h3>
-            <span class="count" id="count-foals">3</span>
+            <h3>2026 Foals</h3>
+            <span class="count" id="count-foals">1</span>
         </div>
         <div class="horse-grid" id="foal-grid">
             <!-- Cards populated by JS -->
@@ -1828,7 +1844,7 @@ const broodmares = [
     }
 ];
 
-const foals = [
+const yearlings = [
     {
         name: "Cuff '25",
         sire: "Justify",
@@ -1873,7 +1889,10 @@ const foals = [
         news: [],
         image: "the-easel-queen-25.jpg",
         pedigreeImage: "pedigree-the-easel-queen-25.pdf"
-    },
+    }
+];
+
+const foals = [
     {
         name: "Malibeauty '26",
         sire: "Oscar Performance",
@@ -2015,7 +2034,7 @@ function openModal(type, name) {
     } else if (type === 'broodmare') {
         horse = broodmares.find(h => h.name === name);
     } else {
-        horse = foals.find(h => h.name === name);
+        horse = foals.find(h => h.name === name) || yearlings.find(h => h.name === name);
     }
 
     if (!horse) return;
@@ -2382,14 +2401,17 @@ document.getElementById('modal').addEventListener('click', (e) => {
 // Render all sections
 document.getElementById('racing-grid').innerHTML = racingHorses.map(createRacingCard).join('');
 document.getElementById('broodmare-grid').innerHTML = broodmares.map(createBroodmareCard).join('');
+document.getElementById('yearling-grid').innerHTML = yearlings.map(createFoalCard).join('');
 document.getElementById('foal-grid').innerHTML = foals.map(createFoalCard).join('');
 
 // Update stats
 document.getElementById('stat-racing').textContent = racingHorses.length;
 document.getElementById('stat-broodmares').textContent = broodmares.length;
+document.getElementById('stat-yearlings').textContent = yearlings.length;
 document.getElementById('stat-foals').textContent = foals.length;
 document.getElementById('count-racing').textContent = racingHorses.length;
 document.getElementById('count-broodmares').textContent = broodmares.length;
+document.getElementById('count-yearlings').textContent = yearlings.length;
 document.getElementById('count-foals').textContent = foals.length;
 
 // Contact form submission handler
