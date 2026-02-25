@@ -360,6 +360,12 @@
             box-shadow: 0 2px 4px rgba(114, 47, 55, 0.4);
         }
 
+        .achievement-badge.graded-stakes {
+            background: linear-gradient(135deg, #8B0000 0%, #5c0000 100%);
+            color: #fff;
+            box-shadow: 0 2px 4px rgba(139, 0, 0, 0.4);
+        }
+
         .card-footer {
             padding: 1rem 1.5rem;
             border-top: 1px solid var(--gray-dark);
@@ -1548,10 +1554,10 @@ const broodmares = [
         nextMatingFarm: null,
         racingRecord: {starts: 18, wins: 4, places: 5, shows: 3},
         earnings: 266261,
-        achievement: ["Graded Stakes Winner", "G3 Santa Barbara S."],
+        achievement: ["Graded Stakes Winner", "G3 Santa Barbara S.", "Over $265K in Earnings"],
         equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=9695328&registry=T&rbt=TB",
         pedigreeNotes: "G3 winning daughter of Americain. Dam of stakes-placed King of Ashes, who finished a close 2nd in the Audubon S. to G1W World Beater. Family of MGSWs Actress and Atamisque.",
-        news: [],
+        news: [{title: "Causeforcommotion Takes On The Boys In San Juan Capistrano", url: "https://paulickreport.com/news/thoroughbred-racing/causeforcommotion-takes-on-the-boys-in-san-juan-capistrano/", date: "June 21, 2019"}, {title: "Causeforcommotion Squealing Her Way Into Gamely Starting Gate", url: "https://paulickreport.com/news/thoroughbred-racing/causeforcommotion-squealing-her-way-into-gamely-starting-gate", date: "May 2019"}, {title: "Causeforcommotion Makes The Grade In Santa Barbara", url: "https://racingdudes.com/causeforcommotion-makes-the-grade-in-santa-barbara/", date: "May 11, 2019"}],
         image: "CauseForCommotion.jpg",
         pedigreeImage: null
     },
@@ -2012,7 +2018,7 @@ function createRacingCard(horse) {
                 <span class="card-badge">${horse.status}</span>
             </div>
             <div class="card-content">
-                ${horse.achievement ? (Array.isArray(horse.achievement) ? horse.achievement.map(a => `<div class="achievement-badge${a.includes('Champion') ? ' champion' : ''}">${a}</div>`).join('') : `<div class="achievement-badge${horse.achievement.includes('Champion') ? ' champion' : ''}">${horse.achievement}</div>`) : ''}
+                ${horse.achievement ? (Array.isArray(horse.achievement) ? horse.achievement.map(a => `<div class="achievement-badge${a.includes('Champion') ? ' champion' : /^G\d\s/.test(a) ? ' graded-stakes' : ''}">${a}</div>`).join('') : `<div class="achievement-badge${horse.achievement.includes('Champion') ? ' champion' : /^G\d\s/.test(horse.achievement) ? ' graded-stakes' : ''}">${horse.achievement}</div>`) : ''}
                 <h4 class="horse-name">${horse.name}</h4>
                 <p class="horse-subtitle">By ${horse.sire.toUpperCase()} out of ${horse.dam}</p>
                 <div class="info-grid">
@@ -2050,7 +2056,7 @@ function createBroodmareCard(mare) {
                 ${mare.inFoalTo ? `<span class="card-badge">In Foal${mare.dueDate ? ` - Due ${mare.dueDate}` : ''}</span>` : mare.delivered ? `<span class="card-badge">Delivered ${mare.delivered}</span>` : ''}
             </div>
             <div class="card-content">
-                ${mare.achievement ? (Array.isArray(mare.achievement) ? mare.achievement.map(a => `<div class="achievement-badge${a.includes('Champion') ? ' champion' : ''}">${a}</div>`).join('') : `<div class="achievement-badge${mare.achievement.includes('Champion') ? ' champion' : ''}">${mare.achievement}</div>`) : ''}
+                ${mare.achievement ? (Array.isArray(mare.achievement) ? mare.achievement.map(a => `<div class="achievement-badge${a.includes('Champion') ? ' champion' : /^G\d\s/.test(a) ? ' graded-stakes' : ''}">${a}</div>`).join('') : `<div class="achievement-badge${mare.achievement.includes('Champion') ? ' champion' : /^G\d\s/.test(mare.achievement) ? ' graded-stakes' : ''}">${mare.achievement}</div>`) : ''}
                 <h4 class="horse-name">${mare.name}</h4>
                 <p class="horse-subtitle">By ${mare.sire.toUpperCase()} out of ${mare.dam}</p>
                 <div class="info-grid">
@@ -2191,7 +2197,7 @@ function openModal(type, name) {
         let achievementHtml = '';
         if (horse.achievement) {
             const achievements = Array.isArray(horse.achievement) ? horse.achievement : [horse.achievement];
-            achievementHtml = `<div style="margin-bottom: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">${achievements.map(a => `<span class="modal-badge" style="background: linear-gradient(135deg, ${a.includes('Champion') ? '#722F37 0%, #4a1f24' : 'var(--gold) 0%, var(--gold-dark)'} 100%); color: ${a.includes('Champion') ? 'var(--gold)' : 'var(--black)'};">${a}</span>`).join('')}</div>`;
+            achievementHtml = `<div style="margin-bottom: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">${achievements.map(a => `<span class="modal-badge" style="background: linear-gradient(135deg, ${a.includes('Champion') ? '#722F37 0%, #4a1f24' : /^G\d\s/.test(a) ? '#8B0000 0%, #5c0000' : 'var(--gold) 0%, var(--gold-dark)'} 100%); color: ${a.includes('Champion') ? 'var(--gold)' : /^G\d\s/.test(a) ? '#fff' : 'var(--black)'};">${a}</span>`).join('')}</div>`;
         }
 
         bodyHtml += `
