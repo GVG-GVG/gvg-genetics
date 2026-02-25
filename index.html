@@ -1551,7 +1551,7 @@ const broodmares = [
         raceHistory: [
             {age: 3, starts: 9, wins: 1, seconds: 3, thirds: 1, earned: 75750},
             {age: 4, starts: 5, wins: 2, seconds: 2, thirds: 1, sw: 1, earned: 120480},
-            {age: 5, starts: 4, wins: 1, seconds: 0, thirds: 1, sw: 1, earned: 70031}
+            {age: 5, starts: 4, wins: 1, seconds: 0, thirds: 1, gsw: 1, earned: 70031}
         ],
         earnings: 266261,
         achievement: ["Graded Stakes Winner", "G3 Santa Barbara S. Champion", "Over $265K in Earnings"],
@@ -2209,7 +2209,7 @@ function openModal(type, name) {
         // If we have detailed race history, show the table
         if (horse.raceHistory && horse.raceHistory.length > 0) {
             let totalStarts = 0, totalWins = 0, totalSeconds = 0, totalThirds = 0, totalEarned = 0;
-            let totalSW = 0, totalSP2 = 0, totalSP3 = 0;
+            let totalSW = 0, totalGSW = 0, totalSP2 = 0, totalSP3 = 0;
 
             horse.raceHistory.forEach(year => {
                 totalStarts += year.starts;
@@ -2218,6 +2218,7 @@ function openModal(type, name) {
                 totalThirds += year.thirds;
                 totalEarned += year.earned;
                 totalSW += year.sw || 0;
+                totalGSW += year.gsw || 0;
                 totalSP2 += year.sp2 || 0;
                 totalSP3 += year.sp3 || 0;
             });
@@ -2239,7 +2240,7 @@ function openModal(type, name) {
                             <tr>
                                 <td>${year.age}</td>
                                 <td>${year.starts}</td>
-                                <td>${year.wins}${year.sw ? ` <span class="stakes-indicator">(${year.sw}SW)</span>` : ''}</td>
+                                <td>${year.wins}${year.gsw ? ` <span class="stakes-indicator">(${year.gsw}GSW)</span>` : year.sw ? ` <span class="stakes-indicator">(${year.sw}SW)</span>` : ''}</td>
                                 <td>${year.seconds}${year.sp2 ? ` <span class="stakes-indicator">(${year.sp2}SP)</span>` : ''}</td>
                                 <td>${year.thirds}${year.sp3 ? ` <span class="stakes-indicator">(${year.sp3}SP)</span>` : ''}</td>
                                 <td>$${year.earned.toLocaleString()}</td>
@@ -2248,7 +2249,7 @@ function openModal(type, name) {
                         <tr class="totals-row">
                             <td>Totals</td>
                             <td>${totalStarts}</td>
-                            <td>${totalWins}${totalSW ? ` <span class="stakes-indicator">(${totalSW}SW)</span>` : ''}</td>
+                            <td>${totalWins}${totalGSW ? ` <span class="stakes-indicator">(${totalGSW}GSW)</span>` : ''}${totalSW ? ` <span class="stakes-indicator">(${totalSW}SW)</span>` : ''}</td>
                             <td>${totalSeconds}${totalSP2 ? ` <span class="stakes-indicator">(${totalSP2}SP)</span>` : ''}</td>
                             <td>${totalThirds}${totalSP3 ? ` <span class="stakes-indicator">(${totalSP3}SP)</span>` : ''}</td>
                             <td>$${totalEarned.toLocaleString()}</td>
