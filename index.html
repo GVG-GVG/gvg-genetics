@@ -1633,6 +1633,79 @@ const broodmares = [
         achievement: ["Stakes Winner", "Irish Juv. Sprint Stakes Champion"],
         equibaseUrl: "https://www.equibase.com/profiles/Results.cfm?type=Horse&refno=9789549&registry=T&rbt=TB",
         pedigreeImage: "pedigree-cuff.pdf",
+        notableOffspring: [
+            {
+                name: "Cairo (IRE)",
+                yob: 2020,
+                sire: "Quality Road",
+                sex: "Colt",
+                record: "23: 3-9-2",
+                earnings: 624179,
+                highlight: "G3 Killavullan S. Winner",
+                blacktype: [
+                    "1st — Killavullan S. [G3] (IRE)",
+                    "1st — Patton S. [L] (IRE)",
+                    "2nd — Irish 2000 Guineas [G1]",
+                    "2nd — Al Rashidiya [G2] (UAE)",
+                    "2nd — Huxley S. [G2] (ENG)",
+                    "2nd — Dubai Millennium S. [G3] (UAE)",
+                    "3rd — Queen Anne S. [G1] (ENG)"
+                ],
+                speedFigure: 105,
+                status: "Active"
+            },
+            {
+                name: "River Redemption",
+                yob: 2018,
+                sire: "Pioneerof the Nile",
+                sex: "Colt",
+                record: "39: 10-5-7",
+                earnings: 211601,
+                highlight: "10-time Winner",
+                blacktype: [],
+                speedFigure: 99,
+                status: "Active"
+            },
+            {
+                name: "Resume (IRE)",
+                yob: 2023,
+                sire: "Wootton Bassett (GB)",
+                sex: "Filly",
+                record: null,
+                earnings: 0,
+                highlight: "Sold for $730,649 at Goffs Orby",
+                blacktype: [],
+                speedFigure: null,
+                status: "Not Yet Started",
+                salePrice: 730649
+            },
+            {
+                name: "Impassioned",
+                yob: 2019,
+                sire: "Quality Road",
+                sex: "Filly",
+                record: null,
+                earnings: 0,
+                highlight: "Sold for $250,000 at KEE November",
+                blacktype: [],
+                speedFigure: null,
+                status: "Not Yet Started",
+                salePrice: 250000
+            },
+            {
+                name: "Zabeel Alkabeir (IRE)",
+                yob: 2022,
+                sire: "Wootton Bassett (GB)",
+                sex: "Colt",
+                record: "3: 2-0-0",
+                earnings: 10388,
+                highlight: "Winner",
+                blacktype: [],
+                speedFigure: 75,
+                status: "Active"
+            }
+        ],
+        produceRecordSummary: {foals: 7, starters: 4, winners: 3, gradedWinners: 1, totalEarnings: 846168},
         pedigreeNotes: "By the legendary Galileo, the most dominant sire in European racing history. Dam by Danehill. Trained by Aidan O'Brien. Royal pedigree with classic European influences. An exceptional foundation mare.",
         news: [{title: "Galileo filly Cuff heading to Ascot", url: "https://web.archive.org/web/20191118023611/https://coolmore.com/farms/ireland/news/galileo-filly-cuff-heading-ascot", date: "2016"}, {title: "Influence of Eljazzi remains strong in Prince Faisal's boutique broodmare band", url: "https://theownerbreeder.com/stories/influence-of-eljazzi-remains-strong-in-prince-faisals-boutique-broodmare-band/", date: ""}, {title: "Coolmore Colt Takes Lead in Euro Road to KY Derby", url: "https://www.bloodhorse.com/horse-racing/articles/266962/coolmore-colt-takes-lead-in-euro-road-to-ky-derby", date: ""}, {title: "Galileo's Cuff Graduates at Naas", url: "https://www.thoroughbreddailynews.com/galileos-cuff-graduates-at-naas/", date: ""}],
         image: "cuff.jpg",
@@ -2401,6 +2474,84 @@ function openModal(type, name) {
                         <div class="stallion">${nextMatingDisplay}</div>
                         ${horse.nextMatingFarm ? `<div class="farm">${getFarmLink(horse.nextMatingFarm)}</div>` : ''}
                     </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Notable Offspring section (for broodmares with produce records)
+    if (horse.notableOffspring && horse.notableOffspring.length > 0) {
+        let totalProgenyEarnings = horse.produceRecordSummary ? `$${horse.produceRecordSummary.totalEarnings.toLocaleString()}` : '';
+        let summaryHtml = '';
+        if (horse.produceRecordSummary) {
+            const s = horse.produceRecordSummary;
+            summaryHtml = `
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 0.5rem; text-align: center;">
+                    <div style="background: rgba(196,155,48,0.08); border-radius: 8px; padding: 0.5rem 0.25rem;">
+                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--gold);">${s.foals}</div>
+                        <div style="font-size: 0.65rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.3px;">Foals</div>
+                    </div>
+                    <div style="background: rgba(196,155,48,0.08); border-radius: 8px; padding: 0.5rem 0.25rem;">
+                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--gold);">${s.starters}</div>
+                        <div style="font-size: 0.65rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.3px;">Starters</div>
+                    </div>
+                    <div style="background: rgba(196,155,48,0.08); border-radius: 8px; padding: 0.5rem 0.25rem;">
+                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--gold);">${s.winners}</div>
+                        <div style="font-size: 0.65rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.3px;">Winners</div>
+                    </div>
+                    <div style="background: rgba(196,155,48,0.08); border-radius: 8px; padding: 0.5rem 0.25rem;">
+                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--gold);">${s.gradedWinners}</div>
+                        <div style="font-size: 0.65rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.3px;">Graded SW</div>
+                    </div>
+                </div>
+                <div style="background: rgba(196,155,48,0.08); border-radius: 8px; padding: 0.6rem; text-align: center; margin-bottom: 1.25rem;">
+                    <span style="font-size: 0.65rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.3px;">Total Progeny Earnings: </span>
+                    <span style="font-size: 1.1rem; font-weight: 700; color: var(--gold);">${totalProgenyEarnings}</span>
+                </div>
+            `;
+        }
+
+        bodyHtml += `
+            <div class="modal-section">
+                <h4 class="modal-section-title">Notable Offspring</h4>
+                ${summaryHtml}
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    ${horse.notableOffspring.map(foal => {
+                        const earningsDisplay = foal.earnings > 0 ? `$${foal.earnings.toLocaleString()}` : (foal.salePrice ? `Sale: $${foal.salePrice.toLocaleString()}` : '—');
+                        const statusColor = foal.status === 'Active' ? '#4CAF50' : (foal.status === 'Not Yet Started' ? 'var(--gray)' : '#888');
+                        const hasBlacktype = foal.blacktype && foal.blacktype.length > 0;
+                        const foalId = foal.name.replace(/[^a-zA-Z0-9]/g, '_');
+                        return `
+                            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(196,155,48,0.15); border-radius: 10px; padding: 1rem; ${hasBlacktype ? 'cursor: pointer;' : ''}" ${hasBlacktype ? `onclick="document.getElementById('bt_${foalId}').style.display = document.getElementById('bt_${foalId}').style.display === 'none' ? 'block' : 'none'"` : ''}>
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem;">
+                                    <div>
+                                        <span style="font-weight: 700; color: var(--white); font-size: 1rem;">${foal.name}</span>
+                                        <span style="color: var(--gray); font-size: 0.8rem; margin-left: 0.4rem;">(${foal.yob})</span>
+                                    </div>
+                                    <span style="font-size: 0.7rem; color: ${statusColor}; background: ${foal.status === 'Active' ? 'rgba(76,175,80,0.1)' : 'rgba(136,136,136,0.1)'}; padding: 2px 8px; border-radius: 10px;">${foal.status}</span>
+                                </div>
+                                <div style="font-size: 0.8rem; color: var(--gray); margin-bottom: 0.5rem;">
+                                    ${foal.sex} by ${foal.sire}
+                                </div>
+                                <div style="display: flex; gap: 0.5rem 1rem; flex-wrap: wrap; font-size: 0.82rem;">
+                                    ${foal.record ? `<div><span style="color: var(--gray);">Record:</span> <span style="color: var(--white);">${foal.record}</span></div>` : ''}
+                                    <div><span style="color: var(--gray);">Earnings:</span> <span style="color: var(--gold); font-weight: 600;">${earningsDisplay}</span></div>
+                                    ${foal.speedFigure ? `<div><span style="color: var(--gray);">BSF:</span> <span style="color: var(--white);">${foal.speedFigure}</span></div>` : ''}
+                                </div>
+                                ${foal.highlight ? `<div style="margin-top: 0.4rem; font-size: 0.8rem; color: var(--gold); font-style: italic;">${foal.highlight}</div>` : ''}
+                                ${hasBlacktype ? `
+                                    <div id="bt_${foalId}" style="display: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(196,155,48,0.1);">
+                                        <div style="font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem;">Black Type Results</div>
+                                        ${foal.blacktype.map(bt => {
+                                            const isWin = bt.startsWith('1st');
+                                            const isG1 = bt.includes('[G1]');
+                                            return `<div style="font-size: 0.8rem; color: ${isG1 ? 'var(--gold)' : (isWin ? 'var(--white)' : 'var(--gray)')}; padding: 2px 0; ${isG1 ? 'font-weight: 600;' : ''}">${bt}</div>`;
+                                        }).join('')}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `;
+                    }).join('')}
                 </div>
             </div>
         `;
