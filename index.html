@@ -2738,7 +2738,7 @@ function createBroodmareCard(mare) {
                         <path d="M10 70 Q30 20 50 40 Q60 50 70 35 Q90 10 110 50 L110 70 Z" fill="#444"/>
                        </svg>`
                 }
-                ${mare.inFoalTo ? `<span class="card-badge">In Foal${mare.dueDate ? ` - Due Date ${mare.dueDate}` : ''}</span>` : mare.delivered ? `<span class="card-badge">Delivered ${mare.delivered}</span>` : ''}
+                ${mare.inFoalTo ? `<span class="card-badge">In Foal${mare.dueDate ? ` - Due ${mare.dueDate}` : ''}</span>` : mare.delivered ? `<span class="card-badge">Delivered ${mare.delivered}</span>` : ''}
             </div>
             <div class="card-content">
                 ${mare.achievement ? (Array.isArray(mare.achievement) ? mare.achievement.map(a => `<div class="achievement-badge${a.includes('Champion') ? ' champion' : /^G\d\s/.test(a) ? ' champion' : ''}">${a}</div>`).join('') : `<div class="achievement-badge${mare.achievement.includes('Champion') ? ' champion' : /^G\d\s/.test(mare.achievement) ? ' champion' : ''}">${mare.achievement}</div>`) : ''}
@@ -2841,9 +2841,9 @@ function openModal(type, name) {
         badgesHtml.push(`<span class="modal-badge">${horse.status}</span>`);
     } else if (type === 'broodmare' && horse.inFoalTo) {
         if (horse.truNicksLink) {
-            badgesHtml.push(`<a href="${horse.truNicksLink}" target="_blank" class="modal-badge truenicks-badge">In Foal to ${horse.inFoalTo}${horse.dueDate ? ` - Due Date ${horse.dueDate}` : ''} <span class="truenicks-icon">TN</span></a>`);
+            badgesHtml.push(`<a href="${horse.truNicksLink}" target="_blank" class="modal-badge truenicks-badge">In Foal to ${horse.inFoalTo}${horse.dueDate ? ` - Due ${horse.dueDate}` : ''} <span class="truenicks-icon">TN</span></a>`);
         } else {
-            badgesHtml.push(`<span class="modal-badge">In Foal to ${horse.inFoalTo}${horse.dueDate ? ` - Due Date ${horse.dueDate}` : ''}</span>`);
+            badgesHtml.push(`<span class="modal-badge">In Foal to ${horse.inFoalTo}${horse.dueDate ? ` - Due ${horse.dueDate}` : ''}</span>`);
         }
     } else if (type === 'broodmare' && horse.delivered) {
         badgesHtml.push(`<span class="modal-badge">Delivered ${horse.delivered}</span>`);
