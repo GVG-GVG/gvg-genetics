@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+._*
+
+# Local backups / snapshots (kept on disk, not in the repo).
+# Point-in-time restores live in git history and in the backup-YYYY-MM-DD tags.
+BACKUP_index_*.html
+backups/
+*_original.*
+
+# Local working files not part of the published site
+GVG_Social_Media_Analysis.docx
+*MPR.pdf
