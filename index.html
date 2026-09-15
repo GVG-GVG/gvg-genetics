@@ -1064,6 +1064,27 @@
             margin: 0 auto;
         }
 
+        .email-link {
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .email-link:hover {
+            border-bottom-color: var(--gold);
+        }
+
+        .contact-email {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-email {
+            margin-top: 0.35rem;
+        }
+
         .form-group {
             margin-bottom: 1.25rem;
             text-align: left;
@@ -1371,7 +1392,7 @@
 <section class="contact-section" id="contact">
     <h3>Get In Touch</h3>
     <p class="subtitle">Interested in our horses? We'd love to hear from you.</p>
-    <form class="contact-form" id="contactForm" action="https://formsubmit.co/graham.gochneaur@gmail.com" method="POST">
+    <form class="contact-form" id="contactForm" action="https://formsubmit.co/gvg@gvg-genetics.com" method="POST">
         <input type="hidden" name="_subject" value="GVG Genetics Website Inquiry">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="">
@@ -1390,12 +1411,14 @@
         <button type="submit" class="submit-btn">Send Message</button>
     </form>
     <div class="form-success" id="formSuccess">Your inquiry has been sent!</div>
+    <p class="contact-email">Or reach us directly at <a class="email-link" data-email-link href="#"></a></p>
 </section>
 
 <footer>
     <img src="gvg-silks-transparent.png" alt="GVG Silks" class="footer-silks">
     <h4>GVG Genetics LLC</h4>
     <p>Dallas, Texas</p>
+    <p class="footer-email"><a class="email-link" data-email-link href="#"></a></p>
     <div class="social-links">
         <a href="https://x.com/GVG_Genetics" target="_blank" title="Follow us on X">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -3332,6 +3355,16 @@ document.getElementById('count-racing').textContent = racingHorses.length;
 document.getElementById('count-broodmares').textContent = broodmares.length;
 document.getElementById('count-yearlings').textContent = yearlings.length;
 document.getElementById('count-foals').textContent = foals.length;
+
+// Email address is assembled at runtime so it never appears as a
+// harvestable string in the page source.
+(function() {
+    const addr = ['gvg', String.fromCharCode(64), 'gvg-genetics', String.fromCharCode(46), 'com'].join('');
+    document.querySelectorAll('[data-email-link]').forEach(function(el) {
+        el.textContent = addr;
+        el.setAttribute('href', 'mai' + 'lto:' + addr);
+    });
+})();
 
 // Contact form submission handler
 document.getElementById('contactForm').addEventListener('submit', function(e) {
