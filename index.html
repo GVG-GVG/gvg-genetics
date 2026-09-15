@@ -247,6 +247,14 @@
             display: block;
         }
 
+        /* Sale photos have the Keeneland bar cropped off the bottom; the image
+           drops by that same amount so the hip badge sits clear of the horse.
+           85/1200 of the source width — percentage margins resolve against the
+           container width, so this holds at every card size. */
+        .card-image.sale-photo img {
+            margin-top: 7.08%;
+        }
+
         .placeholder-silhouette {
             width: 120px;
             height: 80px;
@@ -2833,7 +2841,7 @@ function createBroodmareCard(mare) {
 function createFoalCard(foal) {
     return `
         <div class="horse-card" onclick="openModal('foal', '${foal.name.replace(/'/g, "\\'")}')">
-            <div class="card-image">
+            <div class="card-image${foal.saleInfo ? ' sale-photo' : ''}">
                 ${foal.image
                     ? `<img src="${foal.image}" alt="${foal.name}">`
                     : `<svg class="placeholder-silhouette" viewBox="0 0 120 80">
