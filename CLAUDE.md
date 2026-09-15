@@ -30,6 +30,24 @@ and `-A` stages their deletion. This has already nearly deleted:
 
 `.gitignore` covers `.DS_Store`, `BACKUP_index_*.html`, `backups/`, and local working docs.
 
+### Push credentials
+
+The PAT is **not** in the remote URL. It lives in `.git/.git-credentials` (mode 600,
+inside `.git`, so it can never be committed), read via:
+
+```
+credential.helper = !git credential-store --file "<abs path>/.git/.git-credentials"
+```
+
+The `!` prefix and the quotes are required — the repo path contains a space, and an
+unquoted `store --file=...` value makes git split the path and fail with
+`could not read Username`.
+
+**Before deleting old tokens on GitHub, check which one git is actually using.** A token
+listed as "Never used" is not the one authenticating pushes. Deleting the in-use token
+breaks `push` while `ls-remote` and `clone` keep working, because read access on a public
+repo is anonymous — so the repo looks reachable right up until you try to write.
+
 ### Don't touch the DNS records that serve the site
 
 Four A records (`185.199.108–111.153`) and `www` CNAME → `gvg-gvg.github.io`.
