@@ -255,6 +255,54 @@
             margin-top: 7.08%;
         }
 
+        /* A sold horse gets the result banner stacked under the photo, so the
+           image container runs as a column rather than centring a single child. */
+        .card-image.has-sale-banner {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .sale-banner {
+            background: var(--keeneland-green);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.7rem 1.1rem;
+        }
+
+        .sale-banner-logo {
+            width: 28%;
+            max-width: 190px;
+            min-width: 92px;
+            height: auto;
+            display: block;
+        }
+
+        .sale-banner-text {
+            text-align: right;
+            line-height: 1.15;
+        }
+
+        .sale-banner-sale {
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 0.15rem;
+        }
+
+        .sale-banner-price {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #fff;
+            white-space: nowrap;
+        }
+
         .placeholder-silhouette {
             width: 120px;
             height: 80px;
@@ -2603,7 +2651,12 @@ const yearlings = [
             sale: "Keeneland September",
             hip: "1219",
             consignor: "Denali Stud, Agent VII",
-            url: "https://www.keeneland.com/sales/2026/12/september-yearling-sale/catalog-table/?hip=1219"
+            url: "https://www.keeneland.com/sales/2026/12/september-yearling-sale/catalog-table/?hip=1219",
+            result: {
+                label: "Keeneland September '26",
+                price: "$400,000",
+                buyer: "Jeff Mackor, Agent for Parthemore & Wise"
+            }
         },
         news: [],
         image: "the-easel-queen-25-keesep.jpg",
@@ -2841,13 +2894,21 @@ function createBroodmareCard(mare) {
 function createFoalCard(foal) {
     return `
         <div class="horse-card" onclick="openModal('foal', '${foal.name.replace(/'/g, "\\'")}')">
-            <div class="card-image${foal.saleInfo ? ' sale-photo' : ''}">
+            <div class="card-image${foal.saleInfo ? ' sale-photo' : ''}${foal.saleInfo?.result ? ' has-sale-banner' : ''}">
                 ${foal.image
                     ? `<img src="${foal.image}" alt="${foal.name}">`
                     : `<svg class="placeholder-silhouette" viewBox="0 0 120 80">
                         <path d="M20 65 Q35 30 50 45 Q55 50 60 42 Q75 25 95 55 L95 65 Z" fill="#444"/>
                        </svg>`
                 }
+                ${foal.saleInfo?.result ? `
+                <div class="sale-banner">
+                    <img class="sale-banner-logo" src="keeneland-sales-logo.png" alt="Keeneland Sales">
+                    <div class="sale-banner-text">
+                        <span class="sale-banner-sale">${foal.saleInfo.result.label}</span>
+                        <span class="sale-banner-price">Sold ${foal.saleInfo.result.price}</span>
+                    </div>
+                </div>` : ''}
                 <span class="card-badge">${foal.sex}</span>
                 ${foal.saleInfo ? `<span class="card-badge sale">Hip ${foal.saleInfo.hip}</span>` : ''}
             </div>
@@ -2946,6 +3007,12 @@ function openModal(type, name) {
                         <div class="pedigree-value">${horse.saleInfo.hip}</div>
                         ${horse.saleInfo.consignor ? `<div class="pedigree-note">${horse.saleInfo.consignor}</div>` : ''}
                     </div>
+                    ${horse.saleInfo.result ? `
+                    <div class="pedigree-item">
+                        <div class="pedigree-label">Sold For</div>
+                        <div class="pedigree-value">${horse.saleInfo.result.price}</div>
+                        ${horse.saleInfo.result.buyer ? `<div class="pedigree-note">${horse.saleInfo.result.buyer}</div>` : ''}
+                    </div>` : ''}
                 </div>
                 <a href="${horse.saleInfo.url}" target="_blank" rel="noopener" class="view-pedigree-btn">View on Keeneland ↗</a>
             </div>
