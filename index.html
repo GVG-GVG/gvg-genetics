@@ -1304,6 +1304,26 @@
         }
 
         @media (max-width: 480px) {
+            /* Keep the sale banner on one line on phones — the price is
+               nowrap, so the logo and padding have to give way instead. */
+            .sale-banner {
+                padding: 0.55rem 0.7rem;
+                gap: 0.6rem;
+            }
+
+            .sale-banner-logo {
+                min-width: 74px;
+            }
+
+            .sale-banner-price {
+                font-size: 1.1rem;
+            }
+
+            .sale-banner-sale {
+                font-size: 0.52rem;
+                letter-spacing: 0.14em;
+            }
+
             nav {
                 gap: 0.4rem;
             }
