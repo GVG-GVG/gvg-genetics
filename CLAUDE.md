@@ -36,12 +36,23 @@ The PAT is **not** in the remote URL. It lives in `.git/.git-credentials` (mode 
 inside `.git`, so it can never be committed), read via:
 
 ```
-credential.helper = !git credential-store --file "<abs path>/.git/.git-credentials"
+credential.helper = !f(){ git credential-store --file "$(git rev-parse --absolute-git-dir)/.git-credentials" "$@"; }; f
 ```
 
 The `!` prefix and the quotes are required — the repo path contains a space, and an
 unquoted `store --file=...` value makes git split the path and fail with
 `could not read Username`.
+
+**Do not hardcode an absolute path here.** When this folder is reached from a Cowork
+session, the mount point changes every session (`/sessions/<session-name>/mnt/GVG Claude/...`),
+so an absolute path baked into the config points at a directory that no longer exists and
+push fails with `could not read Username for 'https://github.com'` — the same error as the
+quoting bug, from a different cause. The shell-function form above resolves the path at call
+time and works from any mount point. (Fixed October 9th, 2026.)
+
+A `fatal: unable to get credential storage lock` line *after* a successful
+`... main -> main` push is harmless: the helper is only trying to rewrite the credentials
+file, and the push already went through.
 
 **Before deleting old tokens on GitHub, check which one git is actually using.** A token
 listed as "Never used" is not the one authenticating pushes. Deleting the in-use token
