@@ -83,6 +83,15 @@ Conventions:
   the distinction matters, since the usual phrasing means the horse's *own* race earnings.
 - Badges containing "Champion" or matching `^G\d\s` render maroon; everything else gold.
 
+### Never publish where a horse is kept
+
+Where the horses are — the farm, the training centre, the layup — does not go on the site,
+and does not go in anything written off the site either: profile copy, captions, X posts,
+reports. Don't raise it, don't ask about it, don't infer it from a photo's background.
+
+The `location` field exists on most horses in the four arrays but **nothing renders it** —
+no code reads it. Leave it alone when editing a horse; just never surface it.
+
 ## Images
 
 - **Never crop off a horse's legs or head.** Downscale, don't crop.
