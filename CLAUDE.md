@@ -83,6 +83,28 @@ Conventions:
   the distinction matters, since the usual phrasing means the horse's *own* race earnings.
 - Badges containing "Champion" or matching `^G\d\s` render maroon; everything else gold.
 
+### Every horse needs a `slug`
+
+Each horse carries `slug`, which is what `?horse=<slug>` links to:
+`https://gvg-genetics.com/?horse=sod-siren`. **A new horse without one cannot be
+linked to** — nothing breaks visibly, the share link just never works, so add it
+whenever you add a horse.
+
+Slugs are **stored, not computed**, because a link that has been sent has to keep
+working. The convention: lowercase, drop the country suffix (`Big Beautiful (IRE)`
+→ `big-beautiful`), drop apostrophes (`Jack's Magic Girl` → `jacks-magic-girl`,
+`Nubility '25` → `nubility-25`), and hyphenate the rest. Check it is unique across
+all four arrays before committing.
+
+**When a horse is renamed, keep the old slug** in an `oldSlugs` array so links
+already shared still land. Croga is the worked example — she carries
+`oldSlugs: ["cuff-25"]` from her time as Cuff '25.
+
+The query string is used rather than the hash because the nav already owns
+`#racing`, `#broodmares` and the rest. Links are deliberately flat — no horse
+category in the URL — so a link survives a filly moving from yearlings to racing
+to the broodmare band.
+
 ### Never publish where a horse is kept
 
 Where the horses are — the farm, the training centre, the layup — does not go on the site,
