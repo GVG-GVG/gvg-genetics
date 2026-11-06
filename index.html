@@ -1385,6 +1385,7 @@
             <a href="#broodmares">Broodmares</a>
             <a href="#yearlings">Yearlings</a>
             <a href="#foals">2026 Foals</a>
+            <a href="#sold">Sold</a>
             <a href="#contact">Contact</a>
             <a href="https://x.com/GVG_Genetics" target="_blank" class="nav-social" title="Follow us on X">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1462,6 +1463,17 @@
             <!-- Cards populated by JS -->
         </div>
     </section>
+
+    <!-- Sold Horses Section (not counted in the hero stats) -->
+    <section id="sold">
+        <div class="section-header">
+            <h3>Sold Horses</h3>
+            <span class="count" id="count-sold">2</span>
+        </div>
+        <div class="horse-grid" id="sold-grid">
+            <!-- Cards populated by JS -->
+        </div>
+    </section>
 </main>
 
 <!-- Contact Section -->
@@ -1503,7 +1515,7 @@
         </a>
     </div>
     <div class="footer-divider"></div>
-    <p class="updated">Last updated: October 2026</p>
+    <p class="updated">Last updated: November 2026</p>
 </footer>
 
 <!-- Modal -->
@@ -2712,7 +2724,11 @@ const yearlings = [
         image: "croga-25-oct.jpg",
         pedigreeImage: "pedigree-cuff-25.pdf",
         gallery: ["cuff-25-aug.jpg", "cuff-25-june.jpg", "cuff-25-april.jpg", "cuff-25-march.jpg", "cuff-25.jpg"]
-    },
+    }
+];
+
+// Horses GVG has sold. Shown in the Sold Horses section; not counted in the hero stats.
+const soldHorses = [
     {
         name: "Nubility '25",
         slug: "nubility-25",
@@ -3052,7 +3068,7 @@ function openModal(type, name, fromHistory) {
     } else if (type === 'broodmare') {
         horse = broodmares.find(h => h.name === name);
     } else {
-        horse = foals.find(h => h.name === name) || yearlings.find(h => h.name === name);
+        horse = foals.find(h => h.name === name) || yearlings.find(h => h.name === name) || soldHorses.find(h => h.name === name);
     }
 
     if (!horse) return;
@@ -3541,6 +3557,7 @@ document.getElementById('racing-grid').innerHTML = racingHorses.map(createRacing
 document.getElementById('broodmare-grid').innerHTML = broodmares.map(createBroodmareCard).join('');
 document.getElementById('yearling-grid').innerHTML = yearlings.map(createFoalCard).join('');
 document.getElementById('foal-grid').innerHTML = foals.map(createFoalCard).join('');
+document.getElementById('sold-grid').innerHTML = soldHorses.map(createFoalCard).join('');
 
 // Update stats
 document.getElementById('stat-racing').textContent = racingHorses.length;
@@ -3551,6 +3568,7 @@ document.getElementById('count-racing').textContent = racingHorses.length;
 document.getElementById('count-broodmares').textContent = broodmares.length;
 document.getElementById('count-yearlings').textContent = yearlings.length;
 document.getElementById('count-foals').textContent = foals.length;
+document.getElementById('count-sold').textContent = soldHorses.length;
 
 // ---- Shareable horse links: gvg-genetics.com/?horse=<slug> ----
 // Slugs are stored on each horse rather than derived from the name, so
@@ -3562,7 +3580,7 @@ function findHorseBySlug(slug) {
     if (!slug) return null;
     slug = String(slug).toLowerCase();
     const groups = [['racing', racingHorses], ['broodmare', broodmares],
-                    ['foal', yearlings], ['foal', foals]];
+                    ['foal', yearlings], ['foal', foals], ['foal', soldHorses]];
     for (const [type, list] of groups) {
         for (const horse of list) {
             if (horse.slug === slug || (horse.oldSlugs && horse.oldSlugs.indexOf(slug) !== -1)) {
@@ -3672,7 +3690,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
 
 // Update active nav on scroll
 window.addEventListener('scroll', function() {
-    const sections = ['racing', 'broodmares', 'yearlings', 'foals', 'contact'];
+    const sections = ['racing', 'broodmares', 'yearlings', 'foals', 'sold', 'contact'];
     const scrollPos = window.scrollY + 200;
 
     sections.forEach(sectionId => {
